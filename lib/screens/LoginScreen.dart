@@ -65,9 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Text("Login"),
                         onPressed:() => {
                           if (_formKey.currentState.validate()){
-                            ScaffoldMessenger
-                                .of(context)
-                                .showSnackBar(SnackBar(content: Text("Processing Data")))
+                            //ScaffoldMessenger
+                                //.of(context)
+                                //.showSnackBar(SnackBar(content: Text("Processing Data")))
                           }
                         }
                     )
