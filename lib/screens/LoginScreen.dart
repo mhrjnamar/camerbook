@@ -1,5 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:camerbook/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -7,93 +8,82 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
-      body: Column(
-        children: [
+        appBar: AppBar(
+          title: Text("Login"),
+        ),
+        body: Column(children: [
           Center(
             child: Image.asset("assets/logo.png"),
           ),
           Padding(
-            padding: EdgeInsets.all(16),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Username",
-                    ),
-                    validator: (value) {
-                      if(value.isEmpty){
-                        return "Please enter username";
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Password",
-                    ),
-                    obscureText: true,
-                    validator: (value) {
-                      if(value.isEmpty){
-                        return "Please enter username";
-                      }
-                      return null;
-                    },
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight ,
-                    child: TextButton(
-                      child: Text("Forgot Password?"),
-                      onPressed: () => {
-
+              padding: EdgeInsets.all(16),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        hintText: "Username",
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "Please enter username";
+                        }
+                        return null;
                       },
                     ),
-                  ),
-
-                  Padding(
-                    padding: EdgeInsets.all(0),
-                    child: ElevatedButton(
-                        child: Text("Login"),
-                        onPressed:() => {
-                          if (_formKey.currentState.validate()){
-                            //ScaffoldMessenger
-                                //.of(context)
-                                //.showSnackBar(SnackBar(content: Text("Processing Data")))
-                          }
+                    TextFormField(
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        hintText: "Password",
+                      ),
+                      obscureText: true,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "Please enter username";
                         }
-                    )
-                  ),
-                  Padding(padding: EdgeInsets.all(8)),
-                  Text("Not a member yet?"),
-                  TextButton(
-                    child: Text("Register now"),
-                    onPressed: () => {
-
-                    },
-                  ),
-
-                ],
-              ),
-            )
-          )
-        ]
-      )
-
-    );
-  }
-
-
-  void _signInWithEmailAndPassword() async {
-
+                        return null;
+                      },
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        child: Text("Forgot Password?"),
+                        onPressed: () => {},
+                      ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.all(0),
+                        child: ElevatedButton(
+                            child: Text("Login"),
+                            onPressed: () => {
+                                  if (_formKey.currentState.validate())
+                                    {
+                                      context
+                                          .read<AuthenticationService>()
+                                          .signIn(
+                                            email: emailController.text,
+                                            password: passwordController.text,
+                                          )
+                                    }
+                                })),
+                    Padding(padding: EdgeInsets.all(8)),
+                    Text("Not a member yet?"),
+                    TextButton(
+                      child: Text("Register now"),
+                      onPressed: () => {},
+                    ),
+                  ],
+                ),
+              ))
+        ]));
   }
 }
