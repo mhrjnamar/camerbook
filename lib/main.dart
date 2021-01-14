@@ -25,24 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: FutureBuilder(
-        // Initialize FlutterFire:
-        future: _initialization,
-        builder: (context, snapshot) {
-          // Check for errors
-          if (snapshot.hasError) {
-            return Text('Error');
-          }
-
-          // Once complete, show your application
-          if (snapshot.connectionState == ConnectionState.done) {
-            return LoginScreen();
-          }
-
-          // Otherwise, show something whilst waiting for initialization to complete
-          return Text("kei na kei");
-        },
-      )
+      home: LoginScreen(),
     );
 
   }
