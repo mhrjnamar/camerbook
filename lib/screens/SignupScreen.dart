@@ -1,13 +1,12 @@
-import 'package:camerbook/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -16,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Login"),
+          title: Text("Register"),
         ),
         body: Column(children: [
           Center(
@@ -28,6 +27,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
+                    TextFormField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        hintText: "Name",
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return "Please enter your name";
+                        }
+                        return null;
+                      },
+                    ),
                     TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(
@@ -53,34 +64,17 @@ class _LoginScreenState extends State<LoginScreen> {
                         return null;
                       },
                     ),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        child: Text("Forgot Password?"),
-                        onPressed: () => {},
-                      ),
-                    ),
                     Padding(
                         padding: EdgeInsets.all(0),
                         child: ElevatedButton(
-                            child: Text("Login"),
-                            onPressed: () => {
-                                  if (_formKey.currentState.validate())
-                                    {
-                                      context
-                                          .read<AuthenticationService>()
-                                          .signIn(
-                                            email: emailController.text,
-                                            password: passwordController.text,
-                                          )
-                                    }
-                                })),
+                            child: Text("Register"),
+                            onPressed: () =>
+                                {if (_formKey.currentState.validate()) {}})),
                     Padding(padding: EdgeInsets.all(8)),
-                    Text("Not a member yet?"),
+                    Text("Already a user?"),
                     TextButton(
-                      child: Text("Register now"),
-                      onPressed: () =>
-                          {Navigator.pushNamed(context, '/signup')},
+                      child: Text("Go to login"),
+                      onPressed: () => {Navigator.pop(context)},
                     ),
                   ],
                 ),
