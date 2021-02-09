@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "998344393436",
+    "project_id": "camerbook-8dc3b",
+    "storage_bucket": "camerbook-8dc3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998344393436:android:997808470085ed4d90aa19",
+        "android_client_info": {
+          "package_name": "com.landry.camerbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998344393436-9tojn4vb4e0erd4pq3sbnl7v8do73aee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKdx-0o8RJfZgAP5StP53cgQ4BsTjVhNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998344393436-9tojn4vb4e0erd4pq3sbnl7v8do73aee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
