@@ -15,10 +15,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Login"),
-        ),
-        body: Column(children: [
+      appBar: AppBar(
+        title: Text("Login"),
+      ),
+      body: SingleChildScrollView(
+        child: Column(children: [
           Center(
             child: Image.asset("assets/logo.png"),
           ),
@@ -48,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Please enter password";
+                          return "Please enter username";
                         }
                         return null;
                       },
@@ -64,27 +65,57 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.all(0),
                         child: ElevatedButton(
                             child: Text("Login"),
-                            onPressed: () => {
-                                  if (_formKey.currentState.validate())
-                                    {
-                                      context
-                                          .read<AuthenticationService>()
-                                          .signIn(
-                                            email: emailController.text,
-                                            password: passwordController.text,
-                                          )
-                                    }
-                                })),
+                            onPressed: () async {
+                              if (_formKey.currentState.validate()) {
+                                dynamic results = await context
+                                    .read<AuthenticationService>()
+                                    .signIn(
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                    );
+
+                                if (results != null) {
+                                  showDialog<void>(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    // user must tap button!
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text('Error'),
+                                        content: SingleChildScrollView(
+                                          child: ListBody(
+                                            children: <Widget>[
+                                              Text(results),
+                                            ],
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            child: Text('Done'),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
+                              }
+                            })),
                     Padding(padding: EdgeInsets.all(8)),
                     Text("Not a member yet?"),
                     TextButton(
                       child: Text("Register now"),
-                      onPressed: () =>
-                          {Navigator.pushNamed(context, '/signup')},
+                      onPressed: () => {
+                        {Navigator.pushNamed(context, '/signup')},
+                      },
                     ),
                   ],
                 ),
               ))
-        ]));
+        ]),
+      ),
+    );
   }
 }
