@@ -34,12 +34,14 @@ class SignInAuth extends StatelessWidget {
                     if (snapshot.hasError) {
                       print('You have an error! ${snapshot.error.toString()}');
                       return Text('Something went wrong!');
-                    } else if (snapshot.hasData) {
-                      return AuthenticationWrapper();
-                    } else {
+                    } else if (!snapshot.hasData) {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
+
+                    } else {
+                      final data= snapshot.data;
+                      return AuthenticationWrapper();
                     }
                   },
                 ),
