@@ -1,4 +1,6 @@
+import 'package:camerbook/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -42,11 +44,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        hintText: "Username",
+                        hintText: "Email",
                       ),
                       validator: (value) {
                         if (value.isEmpty) {
-                          return "Please enter username";
+                          return "Please enter your Email";
                         }
                         return null;
                       },
@@ -68,8 +70,13 @@ class _SignupScreenState extends State<SignupScreen> {
                         padding: EdgeInsets.all(0),
                         child: ElevatedButton(
                             child: Text("Register"),
-                            onPressed: () =>
-                                {if (_formKey.currentState.validate()) {}})),
+                            onPressed: () async
+                                {if (_formKey.currentState.validate()) {
+                                  dynamic result = await context.read<AuthenticationService>().signUp(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  );
+                                }})),
                     Padding(padding: EdgeInsets.all(8)),
                     Text("Already a user?"),
                     TextButton(
