@@ -66,10 +66,8 @@ class OnBoardingScreen extends StatelessWidget {
         ],
         onDone: () {
           print("Done is clicked");
-<<<<<<< HEAD
-=======
+
           Navigator.pushNamed(context, '/login');
->>>>>>> 8e29f814769bd58b07e1624d93fa6a7f5d5c56e9
         },
         showSkipButton: true,
         showNextButton: true,
