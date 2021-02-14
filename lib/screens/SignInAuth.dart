@@ -1,6 +1,7 @@
 import 'package:camerbook/auth/authentication_service.dart';
 import 'package:camerbook/screens/HomeScreen.dart';
 import 'package:camerbook/screens/LoginScreen.dart';
+import 'package:camerbook/screens/OnBoardingScreen.dart';
 import 'package:camerbook/screens/SignupScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 // Import the firebase_core plugin
@@ -28,7 +29,7 @@ class SignInAuth extends StatelessWidget {
           initialRoute: '/',
           routes: {
             // When navigating to the "/" route, build the FirstScreen widget.
-            '/': (context) => FutureBuilder(
+            '/login': (context) => FutureBuilder(
                   future: _initialization,
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
@@ -45,6 +46,7 @@ class SignInAuth extends StatelessWidget {
                 ),
             // When navigating to the "/second" route, build the SecondScreen widget.
             '/signup': (context) => SignupScreen(),
+            '/': (context) => OnBoardingScreen(),
           },
           theme: ThemeData(
             primarySwatch: Colors.blue,
