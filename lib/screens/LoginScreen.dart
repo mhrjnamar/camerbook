@@ -113,7 +113,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   });
                                 },
                               )
-                            : Center(child: CircularProgressIndicator())),
+                            : Center(child: CircularProgressIndicator())
+                    ),
                     Padding(padding: EdgeInsets.all(8)),
                     Text("Not a member yet?"),
                     TextButton(

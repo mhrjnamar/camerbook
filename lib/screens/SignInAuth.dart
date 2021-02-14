@@ -41,13 +41,26 @@ class SignInAuth extends StatelessWidget {
                       );
 
                     } else {
-                      final data= snapshot.data;
+
                       return AuthenticationWrapper();
                     }
                   },
                 ),
             // When navigating to the "/second" route, build the SecondScreen widget.
-            '/signup': (context) => SignupScreen(),
+            '/signup': (context) => FutureBuilder(
+              future: _initialization,
+              builder: (context, snapshot) {
+                final data= snapshot.data;
+
+                if (snapshot.hasError) {
+                  print('You have an error! ${snapshot.error.toString()}');
+                  return Text('Something went wrong!');
+                }  else {
+
+                  return SignupWrapper();
+                }
+              },
+            ),
             '/': (context) => OnBoardingScreen(),
           },
           theme: ThemeData(
@@ -67,5 +80,18 @@ class AuthenticationWrapper extends StatelessWidget {
       return HomeScreen();
     }
     return LoginScreen();
+  }
+
+}
+
+class SignupWrapper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null) {
+      return HomeScreen();
+    }
+    return SignupScreen();
   }
 }
