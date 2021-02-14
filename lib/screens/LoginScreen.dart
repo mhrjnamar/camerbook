@@ -2,6 +2,8 @@ import 'package:camerbook/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+bool isLoading = true;
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -63,46 +65,55 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Padding(
                         padding: EdgeInsets.all(0),
-                        child: ElevatedButton(
-                            child: Text("Login"),
-                            onPressed: () async {
-                              if (_formKey.currentState.validate()) {
-                                dynamic results = await context
-                                    .read<AuthenticationService>()
-                                    .signIn(
-                                      email: emailController.text,
-                                      password: passwordController.text,
-                                    );
+                        child: isLoading
+                            ? ElevatedButton(
+                                child: Text('Log in'),
+                                onPressed: () async {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  if (_formKey.currentState.validate()) {
+                                    dynamic results = await context
+                                        .read<AuthenticationService>()
+                                        .signIn(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                        );
 
-                                if (results != null) {
-                                  showDialog<void>(
-                                    context: context,
-                                    barrierDismissible: false,
-                                    // user must tap button!
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: Text('Error'),
-                                        content: SingleChildScrollView(
-                                          child: ListBody(
-                                            children: <Widget>[
-                                              Text(results),
+                                    if (results != null) {
+                                      showDialog<void>(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        // user must tap button!
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text('Error'),
+                                            content: SingleChildScrollView(
+                                              child: ListBody(
+                                                children: <Widget>[
+                                                  Text(results),
+                                                ],
+                                              ),
+                                            ),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                child: Text('Done'),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
                                             ],
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            child: Text('Done'),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          ),
-                                        ],
+                                          );
+                                        },
                                       );
-                                    },
-                                  );
-                                }
-                              }
-                            })),
+                                    }
+                                  }
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                },
+                              )
+                            : Center(child: CircularProgressIndicator())),
                     Padding(padding: EdgeInsets.all(8)),
                     Text("Not a member yet?"),
                     TextButton(
