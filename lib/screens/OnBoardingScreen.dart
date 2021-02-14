@@ -21,7 +21,8 @@ class OnBoardingScreen extends StatelessWidget {
               image: Image.asset("assets/img_secure_payment.svg")),
         ],
         onDone: () {
-          print("Done ios clicked");
+          print("Done is clicked");
+          Navigator.pushNamed(context, '/login');
         },
         showNextButton: true,
         showSkipButton: true,
