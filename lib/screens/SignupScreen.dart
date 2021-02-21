@@ -113,10 +113,11 @@ class _SignupScreenState extends State<SignupScreen> {
                                     },
                                   );
                                 }
+                              }
                                 setState(() {
                                   isLoading1 = true;
                                 });
-                              }
+
                             }
                                 ): Center(child: CircularProgressIndicator())
                     ),

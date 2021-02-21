@@ -1,3 +1,4 @@
+import 'package:camerbook/backend/firebase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationService{
@@ -25,6 +26,7 @@ class AuthenticationService{
 
        await   _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
+       userSetup(email);
     }on FirebaseAuthException catch(e){
       return e.message;
     }

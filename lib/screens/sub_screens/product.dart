@@ -3,20 +3,24 @@ import 'package:slimy_card/slimy_card.dart';
 
 class Product extends StatefulWidget {
   var i;
+  String id;
 
-  Product(var i) {
+  Product(var i,String id) {
     this.i = i;
+    this.id = id;
   }
 
   @override
-  _ProductState createState() => _ProductState(i);
+  _ProductState createState() => _ProductState(i,id);
 }
 
 class _ProductState extends State<Product> {
   var i;
+  String id;
 
-  _ProductState(var i) {
+  _ProductState(var i,String id) {
     this.i = i;
+    this.id = id;
   }
 
   @override
@@ -34,7 +38,7 @@ class _ProductState extends State<Product> {
                 topCardHeight: 265,
                 bottomCardHeight: 400,
                 borderRadius: 25,
-                topCardWidget: myWidget01(i),
+                topCardWidget: myWidget01(i,id),
                 bottomCardWidget: myWidget02(),
                 slimeEnabled: true,
               ),
@@ -44,10 +48,11 @@ class _ProductState extends State<Product> {
   }
 }
 
-myWidget01(i) {
+myWidget01(i,id) {
   return Container(
       child: Column(children: [
     Image(image: AssetImage('assets/' + i)),
+        Text(id),
     Text(
       "Product Name",
       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),

@@ -1,3 +1,4 @@
+import 'package:camerbook/backend/Read.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -9,10 +10,12 @@ class HomeScr extends StatefulWidget {
 }
 
 class _HomeScrState extends State<HomeScr> {
+
   void productDisplay(var i) {
+      String id = ReadUserId();
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext addQuestionContext) {
-      return Product(i);
+      return Product(i,id);
     }));
   }
 

@@ -1,3 +1,5 @@
+import 'package:camerbook/app/theme.dart';
+import 'package:camerbook/screens/sub_screens/test.dart';
 import 'package:provider/provider.dart';
 import 'package:camerbook/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -31,10 +35,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static  List<Widget> _widgetOptions = <Widget>[
 
     HomeScr(),
-    Text(
-      'Index 1: Favourites',
-      style: optionStyle,
-    ),
+    Test(),
     Text(
       'Index 2: My Lists',
       style: optionStyle,
