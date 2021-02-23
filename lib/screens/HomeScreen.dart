@@ -7,6 +7,8 @@ import 'package:camerbook/screens/sub_screens/test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'sub_screens/home.dart';
+
 /// This is the main application widget.
 class HomeScreen extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
