@@ -4,7 +4,7 @@ import 'package:camerbook/screens/sub_screens/test.dart';
 import 'package:provider/provider.dart';
 import 'package:camerbook/auth/authentication_service.dart';
 import 'package:flutter/material.dart';
-import 'package:camerbook/screens/sub_screens/home.dart';
+import 'sub_screens/home.dart';
 /// This is the main application widget.
 class HomeScreen extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -57,7 +57,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           },)
         ],
       ),
-      body: Center(
+      body:
+      Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
