@@ -23,7 +23,7 @@ class AppTheme{
     );
   }
   static const _accentColor = Colors.blueGrey;
-  static const _primaryColor = Colors.black;
+  static const _primaryColor = Colors.blueGrey;
 
   static TextTheme _getTextTheme(Brightness brightness){
     final themeData= ThemeData(brightness: brightness);
