@@ -1,10 +1,12 @@
 import 'package:camerbook/app/theme.dart';
-import 'package:camerbook/screens/sub_screens/AddServices.dart';
-import 'package:camerbook/screens/sub_screens/test.dart';
-import 'package:provider/provider.dart';
 import 'package:camerbook/auth/authentication_service.dart';
-import 'package:flutter/material.dart';
+import 'package:camerbook/screens/ProfileScreen.dart';
+import 'package:camerbook/screens/sub_screens/AddServices.dart';
 import 'package:camerbook/screens/sub_screens/home.dart';
+import 'package:camerbook/screens/sub_screens/test.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 /// This is the main application widget.
 class HomeScreen extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';
@@ -32,12 +34,12 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static  List<Widget> _widgetOptions = <Widget>[
-
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
     HomeScr(),
     Test(),
     AddServices(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,9 +54,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       appBar: AppBar(
         title: const Text('Home'),
         actions: [
-          IconButton(icon: Icon(Icons.logout), onPressed: () {
-            context.read<AuthenticationService>().signOut();
-          },)
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              context.read<AuthenticationService>().signOut();
+            },
+          )
         ],
       ),
       body: Center(
@@ -74,9 +79,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             icon: Icon(Icons.add_box_outlined),
             label: 'Services',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Colors.grey[600],
         onTap: _onItemTapped,
       ),
     );
