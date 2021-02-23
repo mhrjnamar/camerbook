@@ -15,7 +15,7 @@ class AppTheme{
   static ThemeData dark() {
     final textTheme = _getTextTheme(Brightness.dark);
     return ThemeData(
-      primaryColor: _primaryColor,
+      primaryColor: _primaryDarkColor,
       brightness: Brightness.dark,
       accentColor: _accentColor,
       textTheme: textTheme,
@@ -24,6 +24,7 @@ class AppTheme{
   }
   static const _accentColor = Colors.blueGrey;
   static const _primaryColor = Colors.blueGrey;
+  static const _primaryDarkColor = Colors.black;
 
   static TextTheme _getTextTheme(Brightness brightness){
     final themeData= ThemeData(brightness: brightness);
