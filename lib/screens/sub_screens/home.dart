@@ -49,7 +49,7 @@ class _HomeScrState extends State<HomeScr> {
                             height: 80.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: BoxDecoration(color: Colors.green),
+
                             child:
                                 Image(image: AssetImage('assets/unnamed.png'))),
                         Text(
@@ -91,8 +91,7 @@ class _HomeScrState extends State<HomeScr> {
                             height: 80.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration:
-                                BoxDecoration(color: Colors.orangeAccent),
+
                             child: Image(
                                 image: AssetImage('assets/unnamed1.jpg'))),
                         Text(
@@ -134,7 +133,7 @@ class _HomeScrState extends State<HomeScr> {
                             height: 80.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            decoration: BoxDecoration(color: Colors.green),
+
                             child:
                                 Image(image: AssetImage('assets/unnamed.png'))),
                         Text(
