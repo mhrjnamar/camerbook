@@ -68,11 +68,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_border_outlined),
-            label: 'Favourites',
+            label: 'Profesionals',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_box_outlined),
-            label: 'My Lists',
+            label: 'Services',
           ),
         ],
         currentIndex: _selectedIndex,
