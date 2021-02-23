@@ -1,4 +1,5 @@
 import 'package:camerbook/app/theme.dart';
+import 'package:camerbook/screens/sub_screens/AddServices.dart';
 import 'package:camerbook/screens/sub_screens/test.dart';
 import 'package:provider/provider.dart';
 import 'package:camerbook/auth/authentication_service.dart';
@@ -36,10 +37,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
     HomeScr(),
     Test(),
-    Text(
-      'Index 2: My Lists',
-      style: optionStyle,
-    ),
+    AddServices(),
   ];
 
   void _onItemTapped(int index) {
