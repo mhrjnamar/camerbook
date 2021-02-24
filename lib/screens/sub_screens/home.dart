@@ -20,6 +20,7 @@ class _HomeScrState extends State<HomeScr> {
   }
 
   var list = ['amar', 'Aashish', 'Salil'];
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -44,9 +45,9 @@ class _HomeScrState extends State<HomeScr> {
             ],
           )),
       Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(12.0),
         child: CarouselSlider(
-          options: CarouselOptions(height: 150.0, viewportFraction: 0.4),
+          options: CarouselOptions(height: 100.0, viewportFraction: 0.4),
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
@@ -57,13 +58,13 @@ class _HomeScrState extends State<HomeScr> {
                     child: Column(
                       children: [
                         Container(
-                            height: 100.0,
+                            height: 80.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
                             child:
                                 Image(image: AssetImage('assets/unnamed.png'))),
                         Text(
-                          'Top Category',
+                          'Item',
                           style: TextStyle(
                               fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),
@@ -85,9 +86,9 @@ class _HomeScrState extends State<HomeScr> {
         ),
       ),
       Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(12.0),
         child: CarouselSlider(
-          options: CarouselOptions(height: 150.0, viewportFraction: 0.4),
+          options: CarouselOptions(height: 100.0, viewportFraction: 0.4),
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
@@ -98,7 +99,7 @@ class _HomeScrState extends State<HomeScr> {
                     child: Column(
                       children: [
                         Container(
-                            height: 100.0,
+                            height: 80.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
                             child: Image(
@@ -126,9 +127,9 @@ class _HomeScrState extends State<HomeScr> {
         ),
       ),
       Padding(
-        padding: EdgeInsets.all(20.0),
+        padding: EdgeInsets.all(12.0),
         child: CarouselSlider(
-          options: CarouselOptions(height: 150.0, viewportFraction: 0.4),
+          options: CarouselOptions(height: 100.0, viewportFraction: 0.4),
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
@@ -139,7 +140,7 @@ class _HomeScrState extends State<HomeScr> {
                     child: Column(
                       children: [
                         Container(
-                            height: 100.0,
+                            height: 80.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
                             child:
@@ -164,6 +165,7 @@ class PopupListItem extends StatelessWidget {
   var item;
 
   PopupListItem(this.item);
+
   @override
   Widget build(BuildContext context) {
     return Container(
