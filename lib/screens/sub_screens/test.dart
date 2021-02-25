@@ -147,7 +147,7 @@ class _TestState extends State<Test> {
                               });
 
                               if (_formKey.currentState.validate()) {
-                                String data = ReadUserId();
+                                String data = readUserId();
                                 dynamic results = await context.
                                 read<Backend>().addUser(
                                     new UserModel(uid:data,name: nameController.text,profession: profession.text,contact: contact.text ,description: [description.text])

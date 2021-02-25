@@ -12,7 +12,7 @@ class HomeScr extends StatefulWidget {
 
 class _HomeScrState extends State<HomeScr> {
   void productDisplay(var i) {
-    String id = ReadUserId();
+    String id = readUserId();
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext addQuestionContext) {
       return Product(i, id);
