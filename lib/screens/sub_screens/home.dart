@@ -1,4 +1,5 @@
 import 'package:camerbook/backend/Read.dart';
+import 'package:camerbook/shared/shared.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -24,6 +25,7 @@ var list = ['amar', 'Aashish', 'Salil' ];
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
+        color: Colors.redAccent[200],
         padding: EdgeInsets.fromLTRB(5.0, 5.0, 0.0, 5.0),
         child: Column(
           children: [
@@ -31,20 +33,26 @@ var list = ['amar', 'Aashish', 'Salil' ];
                 dataList: list,
                 hideSearchBoxWhenItemSelected: false,
                 listContainerHeight: MediaQuery.of(context).size.height / 4,
+                textFieldBuilder: (TextEditingController controller, FocusNode focusNode) {
+                  return TextField(
+
+                  );
+                },
                 popupListItemBuilder: (item){
                   return PopupListItem(item);
                 }
                 ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Top Category',
-                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-              ),
-            ),
+
         ],
         )
 
+      ),
+      Align(
+        alignment: Alignment.topLeft,
+        child: Text(
+          'Top Category',
+          style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+        ),
       ),
       Padding(
         padding: EdgeInsets.all(20.0),
@@ -60,6 +68,7 @@ var list = ['amar', 'Aashish', 'Salil' ];
                     child: Column(
                       children: [
                         Container(
+                            decoration: sharedBoxDecoration,
                             height: 100.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
@@ -102,6 +111,7 @@ var list = ['amar', 'Aashish', 'Salil' ];
                     child: Column(
                       children: [
                         Container(
+                            decoration: sharedBoxDecoration,
                             height: 100.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
@@ -144,6 +154,7 @@ var list = ['amar', 'Aashish', 'Salil' ];
                     child: Column(
                       children: [
                         Container(
+                            decoration: sharedBoxDecoration,
                             height: 100.0,
                             width: MediaQuery.of(context).size.width,
                             margin: EdgeInsets.symmetric(horizontal: 5.0),
