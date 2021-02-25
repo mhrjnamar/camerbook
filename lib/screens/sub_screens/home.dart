@@ -14,7 +14,7 @@ class HomeScr extends StatefulWidget {
 class _HomeScrState extends State<HomeScr> {
 
   void productDisplay(var i) {
-      String id = ReadUserId();
+      String id = readUserId();
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext addQuestionContext) {
       return Product(i,id);
@@ -33,11 +33,6 @@ var list = ['amar', 'Aashish', 'Salil' ];
                 dataList: list,
                 hideSearchBoxWhenItemSelected: false,
                 listContainerHeight: MediaQuery.of(context).size.height / 4,
-                textFieldBuilder: (TextEditingController controller, FocusNode focusNode) {
-                  return TextField(
-
-                  );
-                },
                 popupListItemBuilder: (item){
                   return PopupListItem(item);
                 }

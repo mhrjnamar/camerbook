@@ -1,6 +1,7 @@
 // Import the firebase_core and cloud_firestore plugin
 
 import 'package:camerbook/model/ProfessionModel.dart';
+import 'package:camerbook/model/ProfileModel.dart';
 import 'package:camerbook/model/ServiceModel.dart';
 import 'package:camerbook/model/UserModel.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,6 +16,7 @@ class Backend{
     CollectionReference professionals = FirebaseFirestore.instance.collection('professional');
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     CollectionReference services = FirebaseFirestore.instance.collection('Services');
+   CollectionReference profile = FirebaseFirestore.instance.collection('Profile');
 
     Future<String> addProfessional(ProfessionModel data) async {
       // Call the user's CollectionReference to add a new user
@@ -50,6 +52,22 @@ class Backend{
               return e.message;
         }
 
+      }
+
+      Future<String> addProfile(ProfileModel data,uid) async{
+          try{
+              await profile.doc(uid)
+                  .set(data.toMap());
+          }on FirebaseException catch(e){
+            return e.message;
+
+          }
+
+
+      }
+
+     readProfile(String uid)async{
+        return await profile.doc(uid).get();
       }
 
 
